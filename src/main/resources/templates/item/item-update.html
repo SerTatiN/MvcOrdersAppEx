@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Edit Item</h1>
+    <form method="post" th:action="@{/item/update/}" th:object="${item}">
+        <!-- надо перед id -->
+        <input th:field="*{id}" hidden>
+
+        <label for ="item-name"> Item : </label>
+        <input id="item-name" th:type="text" th:field="*{itemName}" required minlength="1" maxlength="250" >
+        <label for ="item-art"> Article : </label>
+        <input id="item-art" th:type="text" th:field="*{itemArticle}" required minlength="1" maxlength="250" >
+
+        <button class="btn btn-success">Save</button>
+
+        <!-- Кнопка Cancel -->
+        <a th:href="@{/item/}" class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+
+
+</body>
+</html>

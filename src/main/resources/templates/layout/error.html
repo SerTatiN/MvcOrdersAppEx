@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:insert="layout/page-layout.html :: header"></header>
+  <h1> Something wrong</h1>
+    <h1>[[${err}]]</h1>
+
+  <a th:href="@{/}">Go Home</a>
+
+<footer th:insert="layout/page-layout.html :: footer"></footer>
+
+</body>
+</html>

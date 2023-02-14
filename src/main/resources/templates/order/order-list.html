@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:insert="layout/page-layout.html :: header"></header>
+<!-- контейнер страницы -->
+<div class="container-fluid text-center">
+    <h1> Order List</h1>
+    <!-- вывод goodMsg если добавлен заказ -->
+    <div th:if="${goodMsg != null}" class="alert alert-success">
+        [[${goodMsg}]]
+    </div>
+
+    <!-- пройдемся в цикле по каждому клиенту и выведем его -->
+    <table class="table table-bordered">
+        <!-- шапка таблицы -->
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Client</th>
+                <th>Service</th>
+            </tr>
+        </thead>
+        <!-- тело таблицы -->
+        <tbody>
+            <th:block th:each="order: ${orders}">
+                <!-- в каждой строке таблицы выведем заказ -->
+                <tr>
+                    <td>[[${order.id}]]</td>
+                    <td>[[${order.description}]]</td>
+                    <!-- <td>[[${order.client.clientName}]]</td>
+                    в отдельном столбце разместим ссылки на  Detail-->
+                    <td>
+                        <a th:href="@{'/client/detail/' + ${order.client.id}+'?back=order'}">[[${order.client.clientName}]]</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/order/update/' + ${order.id}}" class="btn btn-primary "> Edit </a>
+                        <a th:href="@{'/order/delete/' + ${order.id}}" class="btn btn-primary "> Delete </a>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+
+    <!-- Кнопка добавления заказа -->
+    <div>
+       <a th:href="@{/order/add/}" class="btn btn-success">Add New Order</a>
+    </div>
+
+
+    <!-- ссылка на главную -->
+    <h3><a th:href="@{/}">Go Home</a></h3>
+</div>
+</body>
+</html>

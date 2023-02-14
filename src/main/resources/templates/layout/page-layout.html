@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment = "test">
+      <h4>This is test fragment on HTML page</h4>
+    </div>
+
+    <!-- Фрагмент футера-->
+    <div th:fragment = "footer" class = "container-fluid text-center fixed-bottom text-bg-info">
+      <h4>Developed by T. Sergeeva 2023 &copy; v0.0.3</h4>
+    </div>
+
+    <!-- Фрагмент хедер-->
+    <div th:fragment = "header">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" aria-current = "page" th:href = "@{/}"> Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current = "page" th:href = "@{/client/}"> Clients </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current = "page" th:href = "@{/order/}"> Orders </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current = "page" th:href = "@{/item/}"> Items </a>
+            </li>
+            <li class="nav-item">
+                <form class="nav-link" aria-current = "page" th:action = "@{/logout}" th:method="post">
+                <botton class="btn btn-primary">Log out</botton>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

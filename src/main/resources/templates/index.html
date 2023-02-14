@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xmln="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <header th:insert="layout/page-layout.html :: header"></header>
+
+    <h1 >Welcome to Orders Application</h1>
+        <h3><a th:href="@{/client/}">Manage Clients</a></h3>
+        <h3><a th:href="@{/order/}">Manage Orders</a></h3>
+        <h3><a th:href="@{/item/}">Manage Items</a></h3>
+    <div th:insert="layout/page-layout.html::test"></div>
+
+    <footer th:insert="layout/page-layout.html :: footer"></footer>
+</body>
+</html>

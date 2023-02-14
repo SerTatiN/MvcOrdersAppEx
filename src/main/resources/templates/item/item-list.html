@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Item List</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:insert="layout/page-layout.html :: header"></header>
+<!-- контейнер страницы -->
+<div class="container-fluid text-center">
+  <h1 >Item List</h1>
+  <!-- вывод goodMsg если клиент добавлен -->
+  <div th:if="${goodMsg != null}" class="alert alert-success">
+    [[${goodMsg}]]
+  </div>
+  <!-- пройдемся в цикле по каждому клиенту и выведем его -->
+  <table class="table table-bordered">
+    <!-- шапка таблицы -->
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Item </th>
+      <th>Article</th>
+      <th></th>
+    </tr>
+    </thead>
+    <!-- тело таблицы -->
+    <tbody>
+    <th:block th:each="item: ${items}">
+      <!-- в каждой строке таблицы выведем клиента -->
+      <tr>
+        <td>[[${item.id}]]</td>
+        <td>[[${item.itemName}]]</td>
+        <td>[[${item.itemArticle}]]</td>
+        <!-- в отдельном столбце разместим кнопки  Delete, Update, Detail-->
+
+        <td>
+          <a th:href="@{'/item/delete/' + ${item.id}}" class="btn btn-danger "> Delete </a>
+          <a th:href="@{'/item/update/' + ${item.id}}" class="btn btn-primary "> Edit </a>
+          <a th:href="@{'/item/detail/' + ${item.id}}" class ="btn btn-warning">Detail</a>
+        </td>
+      </tr>
+    </th:block>
+    </tbody>
+  </table>
+
+  <!-- Кнопка добавления клиента -->
+  <div>
+    <a th:href="@{/item/add/}" class="btn btn-success">Add New Item</a>
+  </div>
+
+
+  <!-- ссылка на главную -->
+  <h3><a th:href="@{/}">Go Home</a></h3>
+</div>
+</body>
+</html>
