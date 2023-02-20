@@ -10,9 +10,10 @@
 <div class="text-center">
     <h1> Client Detail</h1>
     <h2>[[${client}]]</h2>
+
     <!-- Кнопка Cancel -->
-    <a th:if = "${back == 'client'}" th:href="@{/client/}" class="btn btn-danger">Cancel</a>
-    <a th:if = "${back == 'order'}" th:href="@{/order/}" class="btn btn-danger">Cancel</a>
+    <a th:if = "${back == 'client'}" th:href="@{/client/}" class="btn btn-secondary">Cancel</a>
+    <a th:if = "${back == 'order'}" th:href="@{/order/}" class="btn btn-secondary">Cancel</a>
 
 </div>
 <!-- ссылка на главную

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderItems</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Add New OrderItems</h1>
+    <form method="post" th:action="@{/order2/add/}" th:object="${orderItem}">
+       <label for ="quant"> Quantity: </label>
+       <input id="quant" th:type="number" th:field="*{quantity}" required >
+
+        <!-- заказ-->
+       <label for="orderIt-order"> Order:</label>
+        <select id="orderIt-order" th:field="*{order}">
+            <th:block th:each="order: ${orders}">
+                <option th:value="${order.id}">[[${order}]]</option>
+            </th:block>
+        </select>
+
+        <!-- товар-->
+       <label for="orderIt-item"> Item:</label>
+       <select id="orderIt-item" th:field="*{item}">
+           <th:block th:each="item: ${items}">
+               <option th:value="${item.id}">[[${item}]]</option>
+           </th:block>
+       </select>
+        <button class="btn btn-success">Add</button>
+        <!-- Кнопка Cancel -->
+        <a th:href="@{/order2/}" class="btn btn-danger">Cancel</a>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -38,7 +38,8 @@
         <td>
           <a th:href="@{'/item/delete/' + ${item.id}}" class="btn btn-danger "> Delete </a>
           <a th:href="@{'/item/update/' + ${item.id}}" class="btn btn-primary "> Edit </a>
-          <a th:href="@{'/item/detail/' + ${item.id}}" class ="btn btn-warning">Detail</a>
+          <!--<a th:href="@{'/item/detail/' + ${item.id}}" class ="btn btn-warning">Detail</a>-->
+          <a th:href="@{'/item/detail/' + ${item.id} +'?back=item'}" class ="btn btn-info">Detail</a>
         </td>
       </tr>
     </th:block>

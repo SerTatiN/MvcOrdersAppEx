@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update OrderItems</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <h1>Edit OrderItem</h1>
+    <form method="post" th:action="@{/order2/update/}" th:object="${orderItem}">
+   <!-- надо передать id -->
+    <input th:field="*{id}" hidden>
+
+      <label for ="orderIt-quan"> Quantity: </label>
+      <input id="orderIt-quan" th:type="number" th:field="*{quantity}" required >
+
+
+          <!-- Изменяем заказ -->
+
+      <select id="orderIt-order" th:field="*{order}">
+        <th:block th:each="order: ${orders}">
+          <option th:value="${order.id}">[[${order}]]</option>
+        </th:block>
+      </select>
+
+      <!-- Изменяем товар-->
+      <label for="orderIt-item"> Item:</label>
+      <select id="orderIt-item" th:field="*{item}">
+        <th:block th:each="item: ${items}">
+          <option th:value="${item.id}">[[${item}]]</option>
+        </th:block>
+      </select>
+    <button class="btn btn-success">Save</button>
+
+    <!-- Кнопка Cancel -->
+    <a th:href="@{/order2/}" class="btn btn-danger">Cancel</a>
+  </form>
+</div>
+
+
+</body>
+</html>

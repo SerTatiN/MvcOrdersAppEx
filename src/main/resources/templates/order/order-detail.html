@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Detail</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:insert="layout/page-layout.html :: header"></header>
+<div class="text-center">
+  <h1> Order Detail</h1>
+  <h2>[[${order}]]</h2>
+
+  <!-- Кнопка Cancel -->
+
+  <a th:if = "${back == 'order'}" th:href="@{/order/}" class="btn btn-secondary">Cancel</a>
+  <a th:if = "${back == 'order2'}" th:href="@{/order2/}" class="btn btn-secondary">Cancel</a>
+</div>
+<!-- ссылка на главную
+<h3><a th:href="@{/}">Go Home</a></h3>-->
+
+</body>
+</html>

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.top.mvcordersappex.model.dao.client.IDaoClient;
 import org.top.mvcordersappex.model.dao.order.IDaoOrder;
@@ -70,6 +67,17 @@ public class OrderController {
         // 2. вернуться на список сущностей заказа
         return "redirect:/order/";
     }
+
+    @GetMapping("/detail/{id}")
+    public String getDetail(@PathVariable("id") Integer orderId, @RequestParam String back, Model model){
+        Optional<Order> order = daoOrder.getById(orderId);
+        if (order.isPresent()) {
+            model.addAttribute("order", order.get());
+            model.addAttribute("back", back);
+        }
+        return "order/order-detail";
+    }
+
 
     @GetMapping("/delete/{id}")
     public String deleteOrder(@PathVariable ("id") Integer orderId){

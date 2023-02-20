@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>OrderItem</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:insert="layout/page-layout.html :: header"></header>
+ <!--контейнер страницы -->
+<div class="container-fluid text-center">
+  <h1> OrderItem List</h1>
+  <!-- вывод goodMsg если добавлен заказ -->
+  <div th:if="${goodMsg != null}" class="alert alert-success">
+    [[${goodMsg}]]
+  </div>
+  <table class="table table-bordered">
+    <!-- шапка таблицы -->
+      <thead class="table-dark">
+         <tr>
+            <th>ID</th>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th>Order</th>
+            <th></th>
+         </tr>
+      </thead>
+    <!-- тело таблицы -->
+    <tbody>
+      <th:block th:each="orderIt: ${orderItems}">
+      <!-- в каждой строке таблицы заказ-товар -->
+        <tr>
+          <td>[[${orderIt.id}]]</td>
+          <td>[[${orderIt.quantity}]]</td>
+          <td>
+             <a th:href="@{'/item/detail/' + ${orderIt.item.id}+'?back=order2'}">[[${orderIt.item.itemName}]]</a>
+          </td>
+          <td>
+            <a th:href="@{'/order/detail/' + ${orderIt.order.id}+'?back=order2'}" > [[${orderIt.order.description}]] </a>
+          </td>
+          <td>
+            <a th:href="@{'/order2/update/' + ${orderIt.id}}" class="btn btn-primary "> Edit </a>
+            <a th:href="@{'/order2/delete/' + ${orderIt.id}}" class="btn btn-danger "> Delete </a>
+            <a th:href="@{'/order2/detail/' + ${orderIt.id}}" class="btn btn-info "> Detail </a>
+          </td>
+        </tr>
+      </th:block>
+    </tbody>
+  </table>
+    <!-- Кнопка добавления  -->
+    <div>
+        <a th:href="@{/order2/add/}" class="btn btn-success">Add New OrderItem</a>
+    </div>
+  <!-- ссылка на главную -->
+  <h3><a th:href="@{/}">Go Home</a></h3>
+</div>
+</body>
+</html>

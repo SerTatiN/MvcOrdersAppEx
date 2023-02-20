@@ -12,11 +12,11 @@ public class OrderItem {
 
     @Column(nullable = false)
     private Integer quantity;
-
+   // @JsonIgnore
     @ManyToOne
     @JoinColumn(name="item_id",nullable = false)
     private Item item;
-
+   // @JsonIgnore
     @ManyToOne
     @JoinColumn(name="order_id", nullable = false)
     private Order order;
@@ -56,7 +56,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     public Item getItem() {
         return item;
     }
@@ -65,7 +65,7 @@ public class OrderItem {
         this.item = item;
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     public Order getOrder() {
         return order;
     }
@@ -76,6 +76,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return id + " - " + quantity + " - " + item + " - " + order;
+        return id + " - " + quantity;//+ " - " + item + " - " + order;
     }
 }

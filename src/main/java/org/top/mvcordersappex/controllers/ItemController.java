@@ -65,13 +65,18 @@ public class ItemController {
 
 
     @GetMapping("/detail/{id}")
-    public String itemDetail(@PathVariable("id") Integer itemId, Model model){
+    public String itemDetail(@PathVariable("id") Integer itemId,@RequestParam String back, Model model){
         Optional<Item> item = daoItem.getById(itemId);
         if (item.isPresent()) {
             model.addAttribute("item", item.get());
+            model.addAttribute("back", back);
         }
         return  "item/item-detail";
     }
-
+    @GetMapping("/delete/{id}")
+    public String deleteItem(@PathVariable ("id") Integer itemId){
+        daoItem.delete(itemId);
+        return "redirect:/item/";
+    }
 
 }
