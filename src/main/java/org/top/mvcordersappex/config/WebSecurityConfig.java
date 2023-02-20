@@ -1,6 +1,6 @@
 package org.top.mvcordersappex.config;
 
-/*
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,13 +10,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;*/
+import org.springframework.security.web.SecurityFilterChain;
 
 // Класс конфигурации Spring Security
-/*@Configuration
-@EnableWebSecurity*/
+@Configuration
+@EnableWebSecurity
 public class WebSecurityConfig {
-/*
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -28,9 +28,10 @@ public class WebSecurityConfig {
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
+                        .failureUrl("/login?error=true")
                 )
                 //.logout((logout) -> logout.permitAll());
-                .logout().logoutSuccessUrl("/logout");
+                .logout().logoutSuccessUrl("/login");
         return http.build();
     }
 //Провайдер работы с пользователями
@@ -50,6 +51,5 @@ public class WebSecurityConfig {
         return new InMemoryUserDetailsManager(user,admin);
     }
 
-//    @Bean
-//    public WebSecurityCustomizer igno*/
+
 }

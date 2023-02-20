@@ -64,7 +64,7 @@
             <artifactId>webjars-locator-core</artifactId>
             <version>0.52</version>
         </dependency>
-        <!-- ... Spring Security ...
+        <!-- ... Spring Security ...-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -77,7 +77,7 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 

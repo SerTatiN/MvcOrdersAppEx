@@ -9,8 +9,9 @@
 <header th:insert="layout/page-layout.html :: header"></header>
   <h1> Something wrong</h1>
     <h2>ErrorCode: [[${errorCode}]]</h2>
+    <h2>Message: [[${msg}]]</h2>
 
-  <a th:href="@{/}">Go Home</a>
+    <a th:href="@{/}">Go Home</a>
 
 <footer th:insert="layout/page-layout.html :: footer"></footer>
 
