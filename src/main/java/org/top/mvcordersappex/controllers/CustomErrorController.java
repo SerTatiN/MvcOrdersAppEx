@@ -15,6 +15,7 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     public String handleError(HttpServletResponse response, Model model) {
         model.addAttribute("errorCode",response.getStatus());
+        model.addAttribute("msg", "Ой! Что-то пошло не так...");
         return "layout/error";
     }
 //    @RequestMapping("/error")
